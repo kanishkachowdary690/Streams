@@ -24,7 +24,7 @@ public class Filter {
         System.out.println(NoNull);
         List<String> noBlank=names.stream().filter(Objects::nonNull).filter(val->!val.isBlank()).collect(Collectors.toList());
         System.out.println(noBlank);
-        System.out.println(noBlank);
+        
 	}
 
 }

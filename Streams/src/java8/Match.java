@@ -35,7 +35,7 @@ public class Match {
 		boolean hello=langs.stream().anyMatch(values->values.equalsIgnoreCase("telugu")&& values.equals("Hindi"));
 		System.out.println(hello);
 		List<String> hellos=langs.stream().filter(values->values.equalsIgnoreCase("hindi")||values.equalsIgnoreCase("telugu")).collect(Collectors.toList());
-		
+		System.out.println(hellos);
 
 	}
 

@@ -20,10 +20,29 @@ public class ClassToList {
 		System.out.println(count);  
 	   
 		
-		
 		List<Product> prods=products.stream().filter(Objects::nonNull).filter(q->q.getPrice()!=0).filter(w->w.getName()!=null)
 				.filter(e->e.getPrice()>140).collect(Collectors.toList());
 		System.out.println(prods);
+		
+		//getting names
+		List<String> names=products.stream().filter(Objects::nonNull).filter(a->a.getName()!=null).map(pr->pr.getName()).collect(Collectors.toList());
+		System.out.println(names);
+		
+		
+		//comparing names
+		/*
+		 * List<Product>
+		 * comp=products.stream().filter(Objects::nonNull).filter(q->q.getName().
+		 * equalsIgnoreCase("mango")) .collect(Collectors.toList());
+		 * System.out.println(comp);
+		 */
+		
+		
+		
+		List<Product> getParticularProductByProductNameSearch = products.stream().filter(Objects::nonNull)
+				.filter(product -> product.getName().equalsIgnoreCase("lemon")).collect(Collectors.toList());
+		System.out.println(getParticularProductByProductNameSearch);
+
 	}
 }
 class Product{

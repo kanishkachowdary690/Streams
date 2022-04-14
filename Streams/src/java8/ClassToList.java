@@ -11,10 +11,7 @@ public class ClassToList {
 		// TODO Auto-generated method stub
 		List<Product> products=Arrays.asList(new Product(120,"mango"),new Product(140,"apple"),new Product(150,"grapes")
 				,new Product(180,"kiwi"),null,new Product(0,"apricots"),new Product(190,null));
-		/*
-		 * for(Product pro:products) { System.out.println(pro); }
-		 */
-		System.out.println(products);
+        
 		Long count=products.stream().filter(Objects::nonNull).filter(values->values.getPrice()!=0)
 				.filter(vals->vals.getName()!=null).filter(p->p.getPrice()>120).count();
 		System.out.println(count);  
@@ -22,7 +19,13 @@ public class ClassToList {
 		
 		List<Product> prods=products.stream().filter(Objects::nonNull).filter(q->q.getPrice()!=0).filter(w->w.getName()!=null)
 				.filter(e->e.getPrice()>140).collect(Collectors.toList());
-		System.out.println(prods);
+		if(prods.isEmpty()) {
+       	 System.out.println("empty");
+        }
+        else {
+       	 prods.stream().forEach(y->System.out.println(y.getName()+" "+ y.getPrice()));
+       	 
+        }
 		
 		//getting names
 		List<String> names=products.stream().filter(Objects::nonNull).filter(a->a.getName()!=null).map(pr->pr.getName()).collect(Collectors.toList());
@@ -40,9 +43,14 @@ public class ClassToList {
 		
 		
 		List<Product> getParticularProductByProductNameSearch = products.stream().filter(Objects::nonNull)
-				.filter(product -> product.getName().equalsIgnoreCase("lemon")).collect(Collectors.toList());
-		System.out.println(getParticularProductByProductNameSearch);
-
+				.filter(q->q.getName()!=null).filter(product -> product.getName().equalsIgnoreCase("mango"))
+				.collect(Collectors.toList());
+		if(getParticularProductByProductNameSearch.isEmpty()) {
+			System.out.println("empty");
+		}
+		else {
+			getParticularProductByProductNameSearch.stream().forEach(x->System.out.println(x.getName()+" "+x.getPrice()));
+		}
 	}
 }
 class Product{
